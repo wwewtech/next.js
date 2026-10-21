@@ -35,22 +35,22 @@ Communication between parent and child uses arrays sent over IPC (child_process)
 
 ### Parent → Child
 
-| Message | Format |
-|---------|--------|
-| INITIALIZE | `[0, workerPath, setupArgs]` |
-| CALL | `[1, requestId, methodName, args]` |
-| END | `[2]` |
+| Message    | Format                             |
+| ---------- | ---------------------------------- |
+| INITIALIZE | `[0, workerPath, setupArgs]`       |
+| CALL       | `[1, requestId, methodName, args]` |
+| END        | `[2]`                              |
 
 ### Child → Parent
 
-| Message | Format |
-|---------|--------|
-| OK | `[0, requestId, result]` |
+| Message      | Format                                                  |
+| ------------ | ------------------------------------------------------- |
+| OK           | `[0, requestId, result]`                                |
 | CLIENT_ERROR | `[1, requestId, errorName, message, stack, properties]` |
-| SETUP_ERROR | `[2, errorName, message, stack]` |
-| CUSTOM | `[3, payload]` |
-| READY | `[4]` |
-| LOAD_ERROR | `[5, errorName, message, stack]` |
+| SETUP_ERROR  | `[2, errorName, message, stack]`                        |
+| CUSTOM       | `[3, payload]`                                          |
+| READY        | `[4]`                                                   |
+| LOAD_ERROR   | `[5, errorName, message, stack]`                        |
 
 Each CALL gets a unique `requestId` so responses can be correlated, enabling multiple concurrent calls per worker. The READY message is sent once per worker after the module is loaded and optional `setup()` completes, signaling the worker is fully initialized. If `setup()` fails, READY is not sent; the SETUP_ERROR handler frees the booting slot instead and the worker keeps serving calls, since its module is loaded.
 
@@ -112,63 +112,63 @@ The `setupArgs` are provided via `WorkerPoolOptions.setupArgs`. READY is sent af
 
 ### WorkerPool Options
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `workerPath` | string | required | Absolute path to worker module |
-| `maxWorkers` | number | required | Maximum worker processes/threads |
-| `concurrencyPerWorker` | number | 1 | Max concurrent calls per worker |
-| `enableWorkerThreads` | boolean | false | Use worker_threads instead of child_process |
-| `sanitizeArgs` | boolean | true | worker_threads only: JSON round-trip call args (strips functions like child_process does). Set `false` to keep structured clone semantics, e.g. for `SharedArrayBuffer` or typed arrays |
-| `forkOptions.env` | object | {} | Environment variables for child processes |
-| `forkOptions.execArgv` | string[] | [] | Node.js CLI flags for child processes |
-| `setupArgs` | unknown[] | [] | Arguments for worker `setup()` function |
-| `maxBootingWorkers` | number | ceil(maxWorkers/4) | Max workers starting up concurrently (must be >= 1). A worker is "booting" from spawn until it sends READY after module load + setup(). |
-| `timeout` | number | undefined | Per-worker inactivity timeout in ms. Workers with in-flight requests that don't report activity within this window are killed and replaced individually. |
-| `onActivity` | function | undefined | `() => void` — called when any worker reports activity (message completion, custom message, ready) |
-| `onWorkerExit` | function | undefined | `(code, signal) => void` — called when a worker exits unexpectedly (not during graceful shutdown) |
-| `onCustomMessage` | function | undefined | `(message) => void` — called when a worker sends a CUSTOM message |
+| Option                 | Type      | Default            | Description                                                                                                                                                                             |
+| ---------------------- | --------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `workerPath`           | string    | required           | Absolute path to worker module                                                                                                                                                          |
+| `maxWorkers`           | number    | required           | Maximum worker processes/threads                                                                                                                                                        |
+| `concurrencyPerWorker` | number    | 1                  | Max concurrent calls per worker                                                                                                                                                         |
+| `enableWorkerThreads`  | boolean   | false              | Use worker_threads instead of child_process                                                                                                                                             |
+| `sanitizeArgs`         | boolean   | true               | worker_threads only: JSON round-trip call args (strips functions like child_process does). Set `false` to keep structured clone semantics, e.g. for `SharedArrayBuffer` or typed arrays |
+| `forkOptions.env`      | object    | {}                 | Environment variables for child processes                                                                                                                                               |
+| `forkOptions.execArgv` | string[]  | []                 | Node.js CLI flags for child processes                                                                                                                                                   |
+| `setupArgs`            | unknown[] | []                 | Arguments for worker `setup()` function                                                                                                                                                 |
+| `maxBootingWorkers`    | number    | ceil(maxWorkers/4) | Max workers starting up concurrently (must be >= 1). A worker is "booting" from spawn until it sends READY after module load + setup().                                                 |
+| `timeout`              | number    | undefined          | Per-worker inactivity timeout in ms. Workers with in-flight requests that don't report activity within this window are killed and replaced individually.                                |
+| `onActivity`           | function  | undefined          | `() => void` — called when any worker reports activity (message completion, custom message, ready)                                                                                      |
+| `onWorkerExit`         | function  | undefined          | `(code, signal) => void` — called when a worker exits unexpectedly (not during graceful shutdown)                                                                                       |
+| `onCustomMessage`      | function  | undefined          | `(message) => void` — called when a worker sends a CUSTOM message                                                                                                                       |
 
 ### WorkerPool Methods
 
-| Method | Returns | Description |
-|--------|---------|-------------|
-| `dispatch(method, args)` | `Promise<unknown>` | Call a method on a worker; spawns/queues as needed |
-| `shutdown()` | `Promise<{ forceExited: boolean }>` | Graceful shutdown: sends END to workers, waits for exit (5s force-kill timeout) |
-| `shutdownNow()` | `void` | Immediate shutdown: force-kills all workers, rejects in-flight and queued tasks |
-| `getStdout()` | `PassThrough` | Merged stdout stream from all workers |
-| `getStderr()` | `PassThrough` | Merged stderr stream from all workers |
-| `getWorkerCount()` | `number` | Number of currently alive workers |
+| Method                   | Returns                             | Description                                                                     |
+| ------------------------ | ----------------------------------- | ------------------------------------------------------------------------------- |
+| `dispatch(method, args)` | `Promise<unknown>`                  | Call a method on a worker; spawns/queues as needed                              |
+| `shutdown()`             | `Promise<{ forceExited: boolean }>` | Graceful shutdown: sends END to workers, waits for exit (5s force-kill timeout) |
+| `shutdownNow()`          | `void`                              | Immediate shutdown: force-kills all workers, rejects in-flight and queued tasks |
+| `getStdout()`            | `PassThrough`                       | Merged stdout stream from all workers                                           |
+| `getStderr()`            | `PassThrough`                       | Merged stderr stream from all workers                                           |
+| `getWorkerCount()`       | `number`                            | Number of currently alive workers                                               |
 
 ### Worker Options (high-level)
 
 The `Worker` class wraps `WorkerPool` and adds retry logic, NODE_OPTIONS management, and exposed method wiring.
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `exposedMethods` | string[] | required | Methods to wire up from worker module (underscore-prefixed names are skipped) |
-| `workerName` | string | undefined | Human-readable name for error messages (e.g. "Next.js build worker") |
-| `debuggerPortOffset` | number \| undefined | undefined | Debugger port offset; `undefined` = not inspectable |
-| `isolatedMemory` | boolean | false | If true, strips `--max-old-space-size` from NODE_OPTIONS. Only applies to child_process workers — worker_threads share the parent's V8 heap so this flag has no effect in that mode. |
-| `maxWorkers` | number | cpus - 1 (min 1) | Maximum number of workers to spawn |
-| `maxRetries` | number | 0 | Number of times to re-dispatch a call after a `WorkerExitError` (worker crash). Non-crash errors are never retried. |
-| `onRestart` | function | undefined | `(method, args, attempt) => void` — called before each retry attempt |
-| `maxBootingWorkers` | number | ceil(maxWorkers/4) | Passed through to WorkerPool |
-| `concurrencyPerWorker` | number | 1 | Passed through to WorkerPool |
-| `enableWorkerThreads` | boolean | false | Passed through to WorkerPool |
-| `sanitizeArgs` | boolean | true | Passed through to WorkerPool |
-| `enableSourceMaps` | boolean | false | Adds `--enable-source-maps` to NODE_OPTIONS |
-| `timeout` | number | undefined | Per-worker inactivity timeout in ms. Passed through to WorkerPool. |
-| `forkOptions.env` | object | {} | Merged into worker environment |
-| `onActivity` | function | undefined | Called when any worker reports activity (used for activity spinners) |
-| `onActivityAbort` | function | undefined | Called when a worker produces stdout/stderr output |
+| Option                 | Type                | Default            | Description                                                                                                                                                                          |
+| ---------------------- | ------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `exposedMethods`       | string[]            | required           | Methods to wire up from worker module (underscore-prefixed names are skipped)                                                                                                        |
+| `workerName`           | string              | undefined          | Human-readable name for error messages (e.g. "Next.js build worker")                                                                                                                 |
+| `debuggerPortOffset`   | number \| undefined | undefined          | Debugger port offset; `undefined` = not inspectable                                                                                                                                  |
+| `isolatedMemory`       | boolean             | false              | If true, strips `--max-old-space-size` from NODE_OPTIONS. Only applies to child_process workers — worker_threads share the parent's V8 heap so this flag has no effect in that mode. |
+| `maxWorkers`           | number              | cpus - 1 (min 1)   | Maximum number of workers to spawn                                                                                                                                                   |
+| `maxRetries`           | number              | 0                  | Number of times to re-dispatch a call after a `WorkerExitError` (worker crash). Non-crash errors are never retried.                                                                  |
+| `onRestart`            | function            | undefined          | `(method, args, attempt) => void` — called before each retry attempt                                                                                                                 |
+| `maxBootingWorkers`    | number              | ceil(maxWorkers/4) | Passed through to WorkerPool                                                                                                                                                         |
+| `concurrencyPerWorker` | number              | 1                  | Passed through to WorkerPool                                                                                                                                                         |
+| `enableWorkerThreads`  | boolean             | false              | Passed through to WorkerPool                                                                                                                                                         |
+| `sanitizeArgs`         | boolean             | true               | Passed through to WorkerPool                                                                                                                                                         |
+| `enableSourceMaps`     | boolean             | false              | Adds `--enable-source-maps` to NODE_OPTIONS                                                                                                                                          |
+| `timeout`              | number              | undefined          | Per-worker inactivity timeout in ms. Passed through to WorkerPool.                                                                                                                   |
+| `forkOptions.env`      | object              | {}                 | Merged into worker environment                                                                                                                                                       |
+| `onActivity`           | function            | undefined          | Called when any worker reports activity (used for activity spinners)                                                                                                                 |
+| `onActivityAbort`      | function            | undefined          | Called when a worker produces stdout/stderr output                                                                                                                                   |
 
 ### Worker Methods
 
-| Method | Returns | Description |
-|--------|---------|-------------|
-| `shutdown()` | `Promise<{ forceExited: boolean }>` | Graceful shutdown; removes process exit handler; throws if called twice |
-| `shutdownNow()` | `void` | Immediate shutdown; idempotent |
-| `setOnActivity(cb)` | `void` | Replace the activity callback |
-| `setOnActivityAbort(cb)` | `void` | Replace the activity-abort callback |
+| Method                   | Returns                             | Description                                                             |
+| ------------------------ | ----------------------------------- | ----------------------------------------------------------------------- |
+| `shutdown()`             | `Promise<{ forceExited: boolean }>` | Graceful shutdown; removes process exit handler; throws if called twice |
+| `shutdownNow()`          | `void`                              | Immediate shutdown; idempotent                                          |
+| `setOnActivity(cb)`      | `void`                              | Replace the activity callback                                           |
+| `setOnActivityAbort(cb)` | `void`                              | Replace the activity-abort callback                                     |
 
 The Worker class registers a `process.on('exit')` handler that calls `shutdownNow()` to clean up workers when the parent exits. This handler is removed on `shutdown()`/`shutdownNow()` to prevent listener leaks. Internally, `shutdown()` calls `pool.shutdown()` and `shutdownNow()` calls `pool.shutdownNow()`.
