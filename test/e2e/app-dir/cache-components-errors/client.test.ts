@@ -159,8 +159,7 @@ describe('Cache Components Errors - Client Components', () => {
                  - Start the app in development mode by running \`next dev\`, then open "/client-awaited-io" in your browser to investigate the error.
                  - Rerun the production build with \`next build --debug-prerender\` to generate better stack traces.
                Error occurred prerendering page "/client-awaited-io". Read more: https://nextjs.org/docs/messages/prerender-error
-
-               > Export encountered an error on /client-awaited-io/page: /client-awaited-io, exiting the build."
+               Export encountered an error on /client-awaited-io/page: /client-awaited-io, exiting the build."
               `)
             }
           } else {
@@ -231,8 +230,7 @@ describe('Cache Components Errors - Client Components', () => {
                  - Start the app in development mode by running \`next dev\`, then open "/client-awaited-io" in your browser to investigate the error.
                  - Rerun the production build with \`next build --debug-prerender\` to generate better stack traces.
                Error occurred prerendering page "/client-awaited-io". Read more: https://nextjs.org/docs/messages/prerender-error
-
-               > Export encountered an error on /client-awaited-io/page: /client-awaited-io, exiting the build."
+               Export encountered an error on /client-awaited-io/page: /client-awaited-io, exiting the build."
               `)
             }
           }
@@ -331,8 +329,7 @@ describe('Cache Components Errors - Client Components', () => {
                  - Start the app in development mode by running \`next dev\`, then open "/client-use-search-params" in your browser to investigate the error.
                  - Rerun the production build with \`next build --debug-prerender\` to generate better stack traces.
                Error occurred prerendering page "/client-use-search-params". Read more: https://nextjs.org/docs/messages/prerender-error
-
-               > Export encountered an error on /client-use-search-params/page: /client-use-search-params, exiting the build."
+               Export encountered an error on /client-use-search-params/page: /client-use-search-params, exiting the build."
               `)
             }
           } else {
@@ -380,8 +377,7 @@ describe('Cache Components Errors - Client Components', () => {
                  - Start the app in development mode by running \`next dev\`, then open "/client-use-search-params" in your browser to investigate the error.
                  - Rerun the production build with \`next build --debug-prerender\` to generate better stack traces.
                Error occurred prerendering page "/client-use-search-params". Read more: https://nextjs.org/docs/messages/prerender-error
-
-               > Export encountered an error on /client-use-search-params/page: /client-use-search-params, exiting the build."
+               Export encountered an error on /client-use-search-params/page: /client-use-search-params, exiting the build."
               `)
             }
           }
@@ -481,8 +477,7 @@ describe('Cache Components Errors - Client Components', () => {
                  - Start the app in development mode by running \`next dev\`, then open "/client-use-pathname/[id]" in your browser to investigate the error.
                  - Rerun the production build with \`next build --debug-prerender\` to generate better stack traces.
                Error occurred prerendering page "/client-use-pathname/[id]". Read more: https://nextjs.org/docs/messages/prerender-error
-
-               > Export encountered an error on /client-use-pathname/[id]/page: /client-use-pathname/[id], exiting the build."
+               Export encountered an error on /client-use-pathname/[id]/page: /client-use-pathname/[id], exiting the build."
               `)
             }
           } else {
@@ -540,8 +535,7 @@ describe('Cache Components Errors - Client Components', () => {
                  - Start the app in development mode by running \`next dev\`, then open "/client-use-pathname/[id]" in your browser to investigate the error.
                  - Rerun the production build with \`next build --debug-prerender\` to generate better stack traces.
                Error occurred prerendering page "/client-use-pathname/[id]". Read more: https://nextjs.org/docs/messages/prerender-error
-
-               > Export encountered an error on /client-use-pathname/[id]/page: /client-use-pathname/[id], exiting the build."
+               Export encountered an error on /client-use-pathname/[id]/page: /client-use-pathname/[id], exiting the build."
               `)
             }
           }

@@ -127,8 +127,7 @@ export function registerSyncDynamicTests(ctx: CacheComponentsErrorsContext) {
                  - Start the app in development mode by running \`next dev\`, then open "/sync-random-with-fallback" in your browser to investigate the error.
                  - Rerun the production build with \`next build --debug-prerender\` to generate better stack traces.
                Error occurred prerendering page "/sync-random-with-fallback". Read more: https://nextjs.org/docs/messages/prerender-error
-
-               > Export encountered an error on /sync-random-with-fallback/page: /sync-random-with-fallback, exiting the build."
+               Export encountered an error on /sync-random-with-fallback/page: /sync-random-with-fallback, exiting the build."
               `)
             } else {
               expect(output).toMatchInlineSnapshot(`
@@ -147,8 +146,7 @@ export function registerSyncDynamicTests(ctx: CacheComponentsErrorsContext) {
                  - Start the app in development mode by running \`next dev\`, then open "/sync-random-with-fallback" in your browser to investigate the error.
                  - Rerun the production build with \`next build --debug-prerender\` to generate better stack traces.
                Error occurred prerendering page "/sync-random-with-fallback". Read more: https://nextjs.org/docs/messages/prerender-error
-
-               > Export encountered an error on /sync-random-with-fallback/page: /sync-random-with-fallback, exiting the build."
+               Export encountered an error on /sync-random-with-fallback/page: /sync-random-with-fallback, exiting the build."
               `)
             }
           }
@@ -275,8 +273,7 @@ export function registerSyncDynamicTests(ctx: CacheComponentsErrorsContext) {
                  - Start the app in development mode by running \`next dev\`, then open "/sync-random-without-fallback" in your browser to investigate the error.
                  - Rerun the production build with \`next build --debug-prerender\` to generate better stack traces.
                Error occurred prerendering page "/sync-random-without-fallback". Read more: https://nextjs.org/docs/messages/prerender-error
-
-               > Export encountered an error on /sync-random-without-fallback/page: /sync-random-without-fallback, exiting the build."
+               Export encountered an error on /sync-random-without-fallback/page: /sync-random-without-fallback, exiting the build."
               `)
             } else {
               expect(output).toMatchInlineSnapshot(`
@@ -295,8 +292,7 @@ export function registerSyncDynamicTests(ctx: CacheComponentsErrorsContext) {
                  - Start the app in development mode by running \`next dev\`, then open "/sync-random-without-fallback" in your browser to investigate the error.
                  - Rerun the production build with \`next build --debug-prerender\` to generate better stack traces.
                Error occurred prerendering page "/sync-random-without-fallback". Read more: https://nextjs.org/docs/messages/prerender-error
-
-               > Export encountered an error on /sync-random-without-fallback/page: /sync-random-without-fallback, exiting the build."
+               Export encountered an error on /sync-random-without-fallback/page: /sync-random-without-fallback, exiting the build."
               `)
             }
           }
@@ -531,8 +527,7 @@ export function registerSyncDynamicTests(ctx: CacheComponentsErrorsContext) {
                    21 |     <div> {
                    digest: '<error-digest>'
                  }
-
-                 > Export encountered an error on /sync-cookies/page: /sync-cookies, exiting the build."
+                 Export encountered an error on /sync-cookies/page: /sync-cookies, exiting the build."
                 `)
             } else {
               expect(output).toMatchInlineSnapshot(`
@@ -541,8 +536,7 @@ export function registerSyncDynamicTests(ctx: CacheComponentsErrorsContext) {
                      at a (<next-dist-dir>) {
                    digest: '<error-digest>'
                  }
-
-                 > Export encountered an error on /sync-cookies/page: /sync-cookies, exiting the build."
+                 Export encountered an error on /sync-cookies/page: /sync-cookies, exiting the build."
                 `)
             }
           }
@@ -853,8 +847,7 @@ export function registerSyncDynamicTests(ctx: CacheComponentsErrorsContext) {
                    21 |       this component reads the \`user-agent\` header synchronously: {userAgent} {
                    digest: '<error-digest>'
                  }
-
-                 > Export encountered an error on /sync-headers/page: /sync-headers, exiting the build."
+                 Export encountered an error on /sync-headers/page: /sync-headers, exiting the build."
                 `)
             } else {
               expect(output).toMatchInlineSnapshot(`
@@ -863,8 +856,7 @@ export function registerSyncDynamicTests(ctx: CacheComponentsErrorsContext) {
                      at a (<next-dist-dir>) {
                    digest: '<error-digest>'
                  }
-
-                 > Export encountered an error on /sync-headers/page: /sync-headers, exiting the build."
+                 Export encountered an error on /sync-headers/page: /sync-headers, exiting the build."
                 `)
             }
           }
