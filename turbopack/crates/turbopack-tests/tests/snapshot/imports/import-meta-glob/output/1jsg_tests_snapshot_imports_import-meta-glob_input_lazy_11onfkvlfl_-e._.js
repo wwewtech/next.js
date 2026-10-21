@@ -1,4 +1,4 @@
-(globalThis["TURBOPACK"] || (globalThis["TURBOPACK"] = [])).push(["output/1jsg_tests_snapshot_imports_import-meta-glob_input_lazy_02o04660ot30s._.js",
+(globalThis["TURBOPACK"] || (globalThis["TURBOPACK"] = [])).push(["output/1jsg_tests_snapshot_imports_import-meta-glob_input_lazy_11onfkvlfl_-e._.js",
 "[project]/turbopack/crates/turbopack-tests/tests/snapshot/imports/import-meta-glob/input/lazy/a.js [test] (ecmascript, async loader)", ((__turbopack_context__) => {
 
 __turbopack_context__.v((parentImport) => {
