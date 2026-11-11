@@ -4580,7 +4580,7 @@ async function renderToStream(
             getServerInsertedHTML: makeGetServerInsertedHTML({
               polyfills,
               renderServerInsertedHTML,
-              serverCapturedErrors: [],
+              serverCapturedErrors: errorType === 'redirect' ? [err] : [],
               basePath,
               tracingMetadata: tracingMetadata,
             }),
@@ -4676,7 +4676,7 @@ async function renderToStream(
             getServerInsertedHTML: makeGetServerInsertedHTML({
               polyfills,
               renderServerInsertedHTML,
-              serverCapturedErrors: [],
+              serverCapturedErrors: errorType === 'redirect' ? [err] : [],
               basePath,
               tracingMetadata: tracingMetadata,
             }),
